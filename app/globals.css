@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* Brand palette: near-black, charcoal, brass gold, off-white. */
+@theme {
+  --color-bg: #0b0b0c;
+  --color-surface: #17171a;
+  --color-surface-2: #202024;
+  --color-line: #2a2a2f;
+  --color-line-strong: #3a3a41;
+  --color-brass: #c8a15a;
+  --color-brass-light: #dcbb7c;
+  --color-brass-dark: #a8843f;
+  --color-ink: #f2efe9;
+  --color-muted: #a1a1aa;
+  --color-danger: #e5484d;
+  --color-danger-soft: #ff8a8e;
+  --color-success: #4cc38a;
+
+  --font-sans: var(--font-heebo), "Heebo", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-brass);
+    color: var(--color-bg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 2px;
+  }
+
+  /* Phone numbers and dates in date pickers read left-to-right even inside RTL text. */
+  input[type="tel"],
+  input[type="date"],
+  input[type="email"],
+  input[type="password"] {
+    direction: ltr;
+    text-align: right;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8);
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    background: #fff !important;
+  }
+}
